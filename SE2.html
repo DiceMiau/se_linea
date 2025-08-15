@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/stylesSE.css">
+    <title>Sistema Experto Detección de plagas</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="Titulo">
+            <h1>Cuestionario </h1>
+        </div>
+
+
+    
+        
+        <h2>Formulario de Diagnóstico</h2>
+        <form id="formularioDiagnostico" action="/guardar" method="POST">
+            <label for="Temp">Temperatura</label>
+            <select name="temp1" id="temp" required>
+                <option value="">¿Qué temperatura ambiental se ha registrado en el cultivo?</option>
+                <option value="Media">a)	Media(18-25°c)</option>
+                <option value="Alta">b)	Alta(26-30°c)</option>
+                <option value="DemiadoAlta">c)	Demasiado Alta(31-35°c)</option>
+        
+            </select>
+
+            <label for="fenologia">Fenología:</label>
+        <div id="cont-img" class="contenedor-imagen">
+            <img src="static/Fenologia-Maiz2.png" alt="Imagen interactiva">
+            <button class="boton boton1" data-click="ve">VE</button>
+            <button class="boton boton2" data-click="v1">V1</button>
+            <button class="boton boton3" data-click="v3">V3</button>
+            <button class="boton boton4" data-click="v7">V7</button>
+            <button class="boton boton5" data-click="v10">V10</button>
+            <button class="boton boton6" data-click="v14">V14</button>
+            <button class="boton boton7" data-click="vt">VT</button>
+            <button class="boton boton8" data-click="r1">R1</button>
+            <button class="boton boton9" data-click="r6">R6</button>
+        </div>
+         <div id="ve" class="ventanilla">
+            <div class="vent">
+                <h2>VE</h2>
+                <p>En esta etapa, la semilla absorbe agua, se hincha y comienza a germinar. Posteriormente, la plántula emerge del suelo.</p>
+                <button class="close">Cerrar</button>
+            </div>
+        </div>
+        <div id="v1" class="ventanilla">
+            <div class="vent">
+                <h2>V1</h2>
+                <p>La planta desarrolla hojas, tallos y raíces. Durante esta etapa, es crucial asegurar un buen suministro de nutrientes y agua para un crecimiento óptimo.</p>
+                <button class="close">Cerrar</button>
+            </div>
+        </div>
+        <div id="v3" class="ventanilla">
+            <div class="vent">
+                <h2>V3</h2>
+                <p>Las raíces nodales son dominantes y ocupan más volumen de suelo que las raíces seminales.</p>
+                <button class="close">Cerrar</button>
+            </div>
+        </div>
+        <div id="v7" class="ventanilla">
+            <div class="vent">
+                <h2>V7</h2>
+                <p>La planta aumenta de altura debido al alargamiento del tallo; las raíces nodales se establecen en los nodos subterráneos más bajos de la planta.</p>
+                <button class="close">Cerrar</button>
+            </div>
+        </div>
+        <div id="v10" class="ventanilla">
+            <div class="vent">
+                <h2>V10</h2>
+                <p>Las raíces de anclaje comienzan a desarrollarse en los nodos inferiores de las plantas sobre el suelo. Hasta esta etapa, la tasa de desarrollo de la hoja es de aproximadamente 2 a 3 días por hoja.</p>
+                <button class="close">Cerrar</button>
+            </div>
+        </div>
+        <div id="v14" class="ventanilla">
+            <div class="vent">
+                <h2>V14</h2>
+                <p>Crecimiento rápido. Esta etapa ocurre aproximadamente dos semanas antes de la floración. Muy sensible al estrés por calor y sequía. </p>
+                <button class="close">Cerrar</button>
+            </div>
+        </div>
+        <div id="vt" class="ventanilla">
+            <div class="vent">
+                <h2>VT</h2>
+                <p> La planta está casi en su altura máxima.</p>
+                <button class="close">Cerrar</button>
+            </div>
+        </div>
+        <div id="r1" class="ventanilla">
+            <div class="vent">
+                <h2>R1</h2>
+                <p>En esta fase, se forman las inflorescencias y se inicia el proceso de polinización. La fertilización en esta etapa es clave para garantizar una buena formación de granos.</p>
+                <button class="close">Cerrar</button>
+            </div>
+        </div>
+        <div id="r6" class="ventanilla">
+            <div class="vent">
+                <h2>R6</h2>
+                <p>Los granos comienzan a desarrollarse y a acumular almidón. Es importante monitorear el suministro de nutrientes para asegurar un alto rendimiento de grano.</p>
+                <button class="close">Cerrar</button>
+            </div>
+        </div>
+            <select name="fase1" id="fase" required>
+                <option value="">¿En qué fase se encuentra el cultivo?</option>
+                <option value="Vegetativa">a)	Vegetativa (V0-V14)</option>
+                <option value="Reproductiva">b)	Reproductiva (R1-R5)</option>
+                <option value="Maduracion">c)	Maduración (R6)</option>
+            </select>
+            <label for="Organo_Afectado">Organo Afectado:</label>
+            <select name="org_afe1" id="orgafe" required>
+                <option value="">¿Qué órgano se ve más afectado?</option>
+                <option value="Tallo">a)	Tallo</option>
+                <option value="Hoja">b)	Hoja </option>
+                <option value="Fruto">c)	Fruto</option>
+            </select>
+            <label for="Humedad">Humedad:</label>
+            <select name="hume1" id="hume" required>
+                <option value="">¿Cuanta Humedad tiene?</option>
+                <option value="Poca">a)	Poca</option>
+                <option value="Media">b)	Media </option>
+                <option value="Moderada">c)	Moderada</option>
+            </select>
+            <br>
+            <label for="Sintomas">Sintomas:</label>
+            <br>
+            <label class="sintoma">Sintomas 1:</label>
+            <select name="sintomas_1" id="sintomas1" required>
+                <option value="">¿Las raíces se encuentran dañadas?</option>
+                <option value="Si">a)	Si </option>
+                <option value="No">b)	No </option>
+            </select>
+            <br>
+            <label class="sintoma">Sintomas 2:</label>
+            <select name="sintomas_2" id="sintomas2" required>
+                <option value="">¿Las raíces se encuentran en forma de “cuello de ganso”?</option>
+                <option value="Si">a)	Si </option>
+                <option value="No">b)	No </option>
+            </select>
+            <div class="contiene-uno">
+                <div class="grid-item">
+                <img src="static/Sintomas/Cuello_ganso.png" alt="Ejemplo 1" class="imagen" style="width: 500px; height: 300px;">
+                </div>
+            </div>
+            <br>
+            <label class="sintoma">Sintomas 3:</label>
+            <select name="sintomas_3" id="sintomas3" required>
+                <option value="">¿En el tallo se observa que?</option>
+                <option value="BarrenaSinCaer">a)	La plaga barrena el tallo sin que se caiga</option>
+                <option value="MordedurasBase">b)	Se encuentran mordeduras en la base de tallo </option>
+                <option value="BarrenaTodo">c)	Barrena todo el tallo</option>       
+                <option value="NingunaObservacion">d)	Ninguna de las opciones</option>              
+            </select>
+            <div class="contiene-tres">
+                <div class="grid-item">
+                <div class="inciso">a)</div>
+                <img src="static/Sintomas/BarrenaSinCaer.png" alt="Ejemplo 1" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">b)</div>
+                <img src="static/Sintomas/Mordedura_BaseTallo.png" alt="Ejemplo 2" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">c)</div>
+                <img src="static/Sintomas/Barrena_Todo.png" alt="Ejemplo 3" class="imagen">
+                </div>
+            </div>
+            <br>
+            <label class="sintoma">Sintomas 4:</label>    
+            <select name="sintomas_4" id="sintomas4" required>
+                <option value="">¿Se puede observar un debilitamiento del anclaje?</option>
+                <option value="Si">a)	Si</option>
+                <option value="No">b)	No</option>
+            </select>
+            <br>
+            <label class="sintoma">Sintomas 5:</label>
+            <select name="sintomas_5" id="sintomas5" required>
+                <option value="">¿Se observa la presencia de insectos alimentándose de los estigmas del maíz?</option>
+                <option value="Si">a)	Si</option>
+                <option value="No">b)	No</option>
+            </select>
+            <div class="contiene-uno">
+                <div class="grid-item">
+                <div class="inciso">a)</div>
+                <img src="static/Sintomas/Estigmas.png" alt="Ejemplo 1" class="imagen" style="width: 500px; height: 300px;">
+                </div>
+            </div>
+            <br>
+            <label class="sintoma">Sintomas 6:</label>
+            <select name="sintomas_6" id="sintomas6" required>
+                <option value="">¿Qué tipo de daño se observa en las hojas del maíz?</option>
+                <option value="HojasAmarillas">a)	Hojas amarillentas</option>
+                <option value="HojasPerforadas">b)	Hojas perforadas</option>
+                <option value="HojasAgujerosSeriados">c)	Hojas con agujeros seriados</option>
+                <option value="DejaNervaduras">d)	Solamente deja nervaduras de las hojas</option>
+            </select>
+            <div class="contiene-cuatro">
+                <div class="grid-item">
+                <div class="inciso">a)</div>
+                <img src="static/Sintomas/Hojas_amarillentas.png" alt="Ejemplo 1" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">b)</div>
+                <img src="static/Sintomas/Hojas_perforadas.png" alt="Ejemplo 2" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">c)</div>
+                <img src="static/Sintomas/Hojas_seriadas.png" alt="Ejemplo 3" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">d)</div>
+                <img src="static/Sintomas/Deja_nervaduras.png" alt="Ejemplo 4" class="imagen">
+                </div>
+            </div>
+            <br>
+            <label class="sintoma">Sintomas 7:</label>
+            <select name="sintomas_7" id="sintomas7" required>
+                <option value="">¿Se detecta consumo de granos por parte de las plagas?</option>
+                <option value="Si">a)	Si</option>
+                <option value="No">b)	No</option>
+            </select>
+            <div class="contiene-uno">
+                <div class="grid-item">
+                <div class="inciso">a)</div>
+                <img src="static/Sintomas/Come_granos.png" alt="Ejemplo 1" class="imagen" style="width: 500px; height: 300px;">
+                </div>
+            </div>
+            <br>
+            <label class="sintoma">Sintomas 8:</label>
+            <select name="sintomas_8" id="sintomas8" required>
+                <option value="">¿Se puede observar que se alimenta de ácaros?</option>
+                <option value="Si">a)	Si</option>
+                <option value="No">b)	No</option>
+            </select>
+            <div class="contiene-uno">
+                <div class="grid-item">
+                <div class="inciso">a)</div>
+                <img src="static/Sintomas/Acaro_maiz.png" alt="Ejemplo 1" class="imagen" style="width: 500px; height: 300px;">
+                </div>
+            </div>
+            <br>
+            <label class="sintoma">Sintomas 9:</label>
+            <select name="sintomas_9" id="sintomas9" required>
+                <option value="">¿La plaga se alimenta del follaje?</option>
+                <option value="Si">a)	Si</option>
+                <option value="No">b)	No</option>
+            </select>
+            <br>
+            <label class="sintoma">Sintomas 10:</label>
+            <select name="sintomas_10" id="sintomas10" required>
+                <option value="">¿Se nota una reducción en el crecimiento del maíz?</option>
+                <option value="Si">a)	Si</option>
+                <option value="No">b)	No</option>
+            </select>
+            <br>
+            <label class="sintoma">Sintomas 11:</label>
+            <select name="sintomas_11" id="sintomas11" required>
+                <option value="">¿Se observa que la productividad se ve afectada?</option>
+                <option value="Si">a)	Si</option>
+                <option value="No">b)	No</option>
+            </select>
+            <br>
+            <label class="sintoma">Sintomas 12:</label>
+            <select name="sintomas_12" id="sintomas12" required>
+                <option value="">¿Puede notar excremento en forma de aserrín?</option>
+                <option value="Si">a)	Si</option>
+                <option value="No">b)	No</option>
+            </select>
+            <div class="contiene-uno">
+                <div class="grid-item">
+                <div class="inciso">a)</div>
+                <img src="static/Sintomas/Aserrin.png" alt="Ejemplo 1" class="imagen" style="width: 500px; height: 300px;">
+                </div>
+            </div>
+            <br>
+            <label class="sintoma">Sintomas 13:</label>
+            <select name="sintomas_13" id="sintomas13" required>
+                <option value="">¿Se ha presentado que el insecto deja tela de seda?</option>
+                <option value="Si">a)	Si</option>
+                <option value="No">b)	No</option>
+            </select>
+            <br>
+            <label class="sintoma">Sintomas 14:</label>
+            <select name="sintomas_14" id="sintomas14" required>
+                <option value="">¿Están las plantas marchitas aun cuando es adecuada la humedad del suelo?</option>
+                <option value="Si">a)	Si</option>
+                <option value="No">b)	No</option>
+            </select>
+            <br>
+            <label for="caracteristicas">caracteristicas</label>
+            <br>
+            <label class="caracteristica">Caracteristica 1:</label>
+            <select name="car_1" id="car1" required>
+
+                <option value=""> ¿De qué color es el huevecillo al inicio?</option>
+                <option value="Blanco">a)	Blanco</option>
+                <option value="AmarilloPalido">b)	Amarillo Pálido </option>
+                <option value="TraslucidooAmarilloNaranaja"> c)	Cambia de traslúcido a amarillo o naranja </option>  
+                <option value="BlancoAmarilloNegro"> d)	Cambia de Blanco a amarillo y finalmente negro </option>  
+                <option value="BlancoCremosoAVerdeOlivo">e)	Blanco cremoso a verde olivo</option>
+            </select>
+            <div class="contiene-cuatro">
+                <div class="grid-item">
+                <div class="inciso">a)</div>
+                <img src="static/Caracteristicas/GusanoA1.png" alt="Ejemplo 1" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">b)</div>
+                <img src="static/Caracteristicas/GusanoAl1.png" alt="Ejemplo 2" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">c)</div>
+                <img src="static/Caracteristicas/ArañaR1.png" alt="Ejemplo 3" class="imagen">
+                </div>
+                <div class="grid-item">
+                    <div class="inciso">d)</div>
+                    <img src="static/Caracteristicas/GusanoE1.png" alt="Ejemplo 4" class="imagen">
+                    </div>
+                <div class="grid-item">
+                <div class="inciso">e)</div>
+                <img src="static/Caracteristicas/GusanoS1.png" alt="Ejemplo 5" class="imagen">
+                </div>
+            </div>
+            <br>
+            <label class="caracteristica">Caracteristica 2:</label>
+            <select name="car_2" id="car2" required>
+                <option value=""> ¿Cuál es la forma del huevecillo?</option>
+                <option value="Esferica">a)   Esférica</option>
+                <option value="Semiesferica">b)	Semiesférica </option>
+                <option value="Ovalada">c)	Ovalada</option>
+                <option value="EsfericaAplastada">d)	Esférica y ligeramente aplanada</option>
+            </select>
+            <br>
+            <label class="caracteristica">Caracteristica 3:</label>
+            <select name="car_3" id="car3" required>
+                <option value=""> ¿Dónde se encuentran los huevecillos?</option>
+                <option value="SeEncuentranAgrupados">a)	Se encuentran agrupados en lotes</option>
+                <option value="ParteSuperiorHojas">b)	En la parte superior de las hojas </option>
+                <option value="ParteInferiorHojas">c)	En la parte inferior de las hojas</option>
+                <option value="EnvesHojas">d)	el envés de las hojas</option>
+                <option value="Suelo">e)	Se encuentra en el suelo</option>
+            </select>
+            <!---
+            <div class="contiene-cinco">
+                <div class="grid-item">
+                <div class="inciso">a)</div>
+                <img src="static/Sintomas/BarrenaSinCaer.png" alt="Ejemplo 1" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">b)</div>
+                <img src="static/Sintomas/Mordedura_BaseTallo.png" alt="Ejemplo 2" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">c)</div>
+                <img src="static/Sintomas/Barrena_Todo.png" alt="Ejemplo 3" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">d)</div>
+                <img src="static/Sintomas/Barrena_Todo.png" alt="Ejemplo 4" class="imagen">
+                </div>
+                <div class="grid-item">
+                    <div class="inciso">e)</div>
+                    <img src="static/Sintomas/Barrena_Todo.png" alt="Ejemplo 4" class="imagen">
+                    </div>
+                
+            </div>
+            --->
+            <br>
+            <label class="caracteristica">Caracteristica 4:</label>
+            <select name="car_4" id="car4" required>
+                <option value=""> ¿Qué características observa en los huevecillos?</option>
+                <option value="EstriasBordeAapice">a)	Tiene estrías desde el borde hacia el ápice</option>
+                <option value="EscamasAlgodonosas">b)	Tiene escamas algodonosas </option>
+                <option value="HilosSeda">c)	Tiene hilos de seda </option>
+                <option value="NoCaracteristica">d)	No se observa alguna caracteristica destacable </option>
+            </select>
+            <div class="contiene-tres">
+                <div class="grid-item">
+                <div class="inciso">a)</div>
+                <img src="static/Caracteristicas/GusanoE1.png" alt="Ejemplo 1" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">b)</div>
+                <img src="static/Caracteristicas/GusanoS1.png" alt="Ejemplo 2" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">c)</div>
+                <img src="static/Caracteristicas/GusanoC1.png" alt="Ejemplo 3" class="imagen">
+                </div>
+            </div> 
+            <br>
+            <label class="caracteristica">Caracteristica 5:</label>
+            <select name="car_5" id="car5" required>
+                <option value=""> ¿Cómo es la larva al inicio?</option>
+                <option value="BlancoAmarilloPuntosNegros">a)	Blanquecina o Amarilla con puntos negros</option>
+                <option value="BlancoaMarron">b)	Blanco a Marrón</option>
+                <option value="MarronManchasRojas">c)	Marrón con manchas rojas</option>
+                <option value="AmarilloMarronNaranja">e)	amarillento, marrón o anaranjado con una cutícula brillante</option>
+                <option value="ColorVariable">d)    Color variable (verde, marrón o grisáceo)</option>
+            </select>
+            <div class="contiene-cuatro">
+                <div class="grid-item">
+                <div class="inciso">a)</div>
+                <img src="static/Caracteristicas/GusanoC2.png" alt="Ejemplo 1" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">b)</div>
+                <img src="static/Caracteristicas/GusanoE2.png" alt="Ejemplo 2" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">c)</div>
+                <img src="static/Caracteristicas/GusanoA2.png" alt="Ejemplo 3" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">d)</div>
+                <img src="static/Caracteristicas/GusanoAl2.png" alt="Ejemplo 4" class="imagen">
+                </div>
+            </div>
+            <br>
+            <label class="caracteristica">Caracteristica 6:</label>
+            <select name="car_6" id="car6" required>
+                <option value=""> ¿Qué característica tiene la cabeza de la larva?</option>
+                <option value="NegroAmbar">a)	Color negro a ámbar</option>
+                <option value="VerdeNegroManchasRectangulares">b)	Verde a negro con guiones o manchas rectangulares</option>
+                <option value="EsclerotizadaColorOscuro">c)	esclerotizada y de color oscuro</option>
+                <option value="NoCaracteristica">d) No se observan caracteristicas</option>
+            </select>
+            <div class="contiene-tres">
+                <div class="grid-item">
+                <div class="inciso">a)</div>
+                <img src="static/Caracteristicas/GusanoE3.png" alt="Ejemplo 2" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">b)</div>
+                <img src="static/Caracteristicas/GusanoS3.png" alt="Ejemplo 3" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">c)</div>
+                <img src="static/Caracteristicas/GusanoAl3.png" alt="Ejemplo 4" class="imagen">
+                </div>
+            </div>
+            <br>
+            <label class="caracteristica">Caracteristica 7:</label>
+            <select name="car_7" id="car7" required>
+                <option value=""> ¿Qué características físicas tiene la larva?</option>
+                <option value="CuerpoAlargadoCilindrico">a)	Cuerpo Alargado y cilíndrico</option>
+                <option value="YInvertida">b)	Tiene una Y invertida</option>
+                <option value="BandaLogitudinalLateral">c)	Banda Logitudinal Lateral</option>
+                <option value="ManchaLateralMesotórax">d)	Mancha lateral en el mesotórax</option>
+                <option value="GaleaMaxilar">e)	Tiene galea y maxilar fusionadas</option>
+                <option value="NoCaracteristica">F)	No se observa la caracteristica</option>
+
+            </select>
+            <div class="contiene-cinco">
+                <div class="grid-item">
+                <div class="inciso">a)</div>
+                <img src="static/Caracteristicas/GusanoAl2.png" alt="Ejemplo 1" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">b)</div>
+                <img src="static/Caracteristicas/GusanoC7.png" alt="Ejemplo 2" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">c)</div>
+                <img src="static/Caracteristicas/GusanoE2.png" alt="Ejemplo 3" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">d)</div>
+                <img src="static/Caracteristicas/GusanoS2.png" alt="Ejemplo 4" class="imagen">
+                </div>
+                <div class="grid-item">
+                    <div class="inciso">e)</div>
+                    <img src="static/Caracteristicas/GaleayMaxilar.png" alt="Ejemplo 4" class="imagen">
+                    </div>
+            </div>
+            <br>
+            <label class="caracteristica">Caracteristica 8:</label>
+            <select name="car_8" id="car8" required>
+                <option value=""> ¿De qué color es la pupa?</option>
+                <option value="MarronClaroaOscuro">a)	Marrón claro a oscuro</option>
+                <option value="Caoba">b)	Caoba</option>
+                <option value="VerdeOlivoManchasMarrones">c)	Verde olivo con manchas marrones</option>
+                <option value="AmarilloPalido">d)	Amarillo Pálido con bandas</option>
+                <option value="CafePalido">e)	Café Pálido</option>
+                <option value="BlancoLechosoaAmarilloClaro">f)  Blanco lechoso a amarillo claro</option>
+            </select>
+            <div class="contiene-cinco">
+                <div class="grid-item">
+                <div class="inciso">a)</div>
+                <img src="static/Caracteristicas/GusanoC8.png" alt="Ejemplo 1" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">b)</div>
+                <img src="static/Caracteristicas/GusanoE4.png" alt="Ejemplo 2" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">c)</div>
+                <img src="static/Caracteristicas/GusanoS5.png" alt="Ejemplo 1" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">d)</div>
+                <img src="static/Caracteristicas/Amarillo_palido.png" alt="Ejemplo 2" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">e)</div>
+                <img src="static/Caracteristicas/GallinaC4.png" alt="Ejemplo 1" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">d)</div>
+                <img src="static/Caracteristicas/Blancolechoso_Amarilloclaro.png" alt="Ejemplo 1" class="imagen">
+                </div>
+            </div> 
+            <br>
+            <label class="caracteristica">Caracteristica 9:</label>
+            <select name="car_9" id="car9" required>
+                <option value=""> ¿Qué forma tiene el extremo de la pupa (cremaster)?</option>
+                <option value="Liso">a)	Liso</option>
+                <option value="DosEspinasRectas">b)	Dos espinas rectas</option>
+                <option value="DosEspinasDistintas">c)	Dos espinas distintas</option>
+                <option value="DosEspinasFormaUinvertida">d)	Dos espinas o ganchos en forma de “U” invertida</option>
+                <option value="NoCaracteristica">e)	No se observa esa caracteristica</option>
+            </select>
+            <br>
+            <label class="caracteristica">Caracteristica 10:</label>
+            <select name="car_10" id="car10" required>
+                <option value=""> ¿Dónde se encuentran las pupas?</option>
+                <option value="5O15cmSuelo">a)	5-15 cm del suelo</option>
+                <option value="HojasSuperiores">b)	En las hojas superiores</option>
+                <option value="ParteSupeiorTallo">c)	Sobre la parte superior del tallo</option>
+                <option value="SeEntierraSuelo">d)	Se entierra en el suelo</option>
+            </select>
+            
+            <label class="caracteristica">Caracteristica 11:</label> 
+            <select name="car_11" id="car11" required>
+                <option value=""> ¿Qué cambios de color presenta la pupa a lo largo del tiempo?</option>
+                <option value="Ninguno">a)	Ninguno, se mantiene del mismo color</option>
+                <option value="BlancoAmarilloOjosOscuros">b) De blanco lechoso a amarillo claro con ojos oscuros</option>
+                <option value="CafeaNegroBrillante">c)	De café a negro brillante</option>
+            </select>
+            <label class="caracteristica">Caracteristica 12:</label>
+            <select name="car_12" id="car12" required>
+                <option value=""> ¿Qué tipo de insecto se observa en el cultivó?</option>
+                <option value="Palomilla">a)	Palomilla</option>
+                <option value="Escarabajo">b)	Escarabajo</option>
+                <option value="Acaro">c)	Acaro</option>
+            </select>
+            <label class="caracteristica">Caracteristica 13:</label>
+            <select name="car_13" id="car13" required>
+                <option value=""> ¿Cómo es el insecto adulto?</option>
+                <option value="ColorGrisconManchasmarrones">a)	Color gris oscuro con manchas marrones</option>
+                <option value="ColorMarrongrisaceoLineasnegroaverdeolivo">b)	Color marrón grisáceo brillante, con líneas de color negro o verde olivo</option>
+                <option value="ColorGris">c)	Color gris</option>
+                <option value="ColorCaferojizoaoscuroOvaladoyAlargado">d)	color café rojizo a café oscuro, ovalado y alargado </option>
+                <option value="ColormarronAnegrometalicoAlargadoyAplanado">e)	Color marrón a negro metálico, alargado y aplanado</option>
+                <option value="ColorRojizo">f)	color rojizo</option>
+                <option value="ColorMarronGrisaceoCuerpoRobusto">g)	Color marrón grisáceo con cuerpo robusto</option>
+            </select>
+             <div class="contiene-cuatro">
+                <div class="grid-item">
+                <div class="inciso">a)</div>
+                <img src="static/Caracteristicas/GusanoC6.png" alt="Ejemplo 1" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">b)</div>
+                <img src="static/Caracteristicas/GusanoE7.png" alt="Ejemplo 2" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">c)</div>
+                <img src="static/Caracteristicas/GusanoS4.png" alt="Ejemplo 3" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">d)</div>
+                <img src="static/Caracteristicas/GusanoA4.png" alt="Ejemplo 4" class="imagen">
+                </div>
+            </div>
+            <div class="contiene-tres">
+                <div class="grid-item">
+                <div class="inciso">e)</div>
+                <img src="static/Caracteristicas/GallinaC5.png" alt="Ejemplo 5" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">f)</div>
+                <img src="static/Caracteristicas/ArañaR5.png" alt="Ejemplo 6" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">g)</div>
+                <img src="static/Caracteristicas/GusanoAl7.png" alt="Ejemplo 7" class="imagen">
+                </div>
+            </div>
+            <label class="caracteristica">Caracteristica 14:</label>
+            <select name="car_14" id="car14" required>
+                <option value=""> ¿Cómo son las alas del insecto adulto?</option>
+                <option value="AnterioresBlancas">a)	Alas anteriores blancas</option>
+                <option value="ManchaOscuraCircularEntreCentroypunta">b)	Mancha oscura casi circular entre el centro y la punta del ala</option>
+                <option value="AnterioresGrisaceoZigzagyPosterioresBlancas">c)	Alas anteriores grisáceo en forma de zigzag y alas posteriores blancas</option>
+                <option value="NoCaracteristica">e) No se observa caracteristica</option>
+            </select>
+            <div class="contiene-tres">
+                <div class="grid-item">
+                <div class="inciso">a)</div>
+                <img src="static/Caracteristicas/Alas_anterioresBlancas.png" alt="Ejemplo 1" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">b)</div>
+                <img src="static/Caracteristicas/Manchas_casiCirculares.png" alt="Ejemplo 2" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">c)</div>
+                <img src="static/Caracteristicas/GusanoS4.png" alt="Ejemplo 3" class="imagen">
+                </div>
+            </div>
+            <label class="caracteristica">Caracteristica 15:</label>
+            <select name="car_15" id="car15" required>
+                <option value=""> ¿Cómo son las patas?</option>
+                <option value="ModeradamenteAlargadasyPocasEspinas">a)	Moderadamente alargadas y con pocas o ninguna espina</option>
+                <option value="Tiene8patasconManchasenDorso">b)	Tiene ocho patas con manchas oscuras en dorso</option>
+                <option value="NoCaracteristica">c)	No se observa caracteristica</option>
+            </select>
+            <div class="contiene-dos">
+                <div class="grid-item">
+                <div class="inciso">a)</div>
+                <img src="static/Caracteristicas/GallinaC8.png" alt="Ejemplo 1" class="imagen">
+                </div>
+                <div class="grid-item">
+                <div class="inciso">b)</div>
+                <img src="static/Caracteristicas/Arañar3.png" alt="Ejemplo 2" class="imagen">
+                </div>
+            </div>
+            <label class="caracteristica">Caracteristica 16:</label>
+            <select name="car_16" id="car16" required>
+                <option value=""> ¿El insecto adulto es atraído por la luz?</option>
+                <option value="Si">a)	Si</option>
+                <option value="No">b)	No</option>
+            </select>
+            <label class="caracteristica">Caracteristica 17:</label>
+            <select name="car_17" id="car17" required>
+                <option value=""> ¿El insecto adulto es activo durante la noche?</option>
+                <option value="Si">a)	Si</option>
+                <option value="No">b)	No</option>
+            </select>
+            <input type="hidden" name="diagnostico" id="diagnostico">
+
+
+            <button class="botonDiagnostica" type="submit">Diagnosticar</button>
+        </form>
+        <div id="gusC" class="resultado">
+            <div class="gusanoC">
+                <h2>Gusano Cogollero</h2>
+                <h3><em>(Spodoptera frugiperda)</em></h3>
+                    <div class="contenedor">
+                        <div class="imagen-texto">
+                            <img src="static/GusanoC6.png" alt="Imagen 1" class="imagen-grid">
+                            <p>6-8 días</p>
+                            <h5>Adulto →</h5>
+                            <ul>
+                                <li>Es color gris oscuro</li>
+                                <li>La hembra es de mayor tamaño</li>
+                                <li>Tiene manchas marrones, grises y blancas</li>
+                                
+                            </ul>
+                        </div>
+                        <div class="imagen-texto">
+                            <img src="static/GusanoC1.png" alt="Imagen 2" class="imagen-grid">
+                            <p>3-4 días</p>
+                            <h5>Huevo →</h5>
+                            <ul>
+                                <li>Es esfeéico y blanquecino</li>
+                                
+                            </ul>
+                        </div>
+                        <div class="imagen-texto">
+                            <img src="static/GusanoC3.png" alt="Imagen 3" class="imagen-grid">
+                            <p>10-20 días</p>
+                            <h5>Larva →</h5>
+                            <ul>
+                                <li>Es blanquecino a amarillo</li>
+                                <li>Tiene pequeños puntos negros </li>
+                                <li>Sobresalen setas primarias</li>
+                                <li>Tiene una Y invertida</li>
+                            </ul>
+                        </div>
+                        <div class="imagen-texto">
+                            <img src="static/GusanoC4.png" alt="Imagen 4" class="imagen-grid">
+                            <p>20-40 días</p>
+                            <h5>Pupa</h5>
+                            <ul>
+                                <li>Es de color Caoba</li>
+                                <li>Su estremo abdominal termina en 2 espinas</li>
+                                <li>Dos espinas forma de U</li>
+                            </ul>
+                        </div>
+                        <div class="imagen-texto">
+                            <ul>
+                                <li><h5>Sintomas:</h5></li>
+                                <li>Se presenta el v0 aR4</li>
+                                <li>Hojas Perforadas</li>
+                                <li>Se encuentra excremento parecido a aserrín</li>
+                                <li>Barrena el tallo sin que se caiga</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                <h3>Manejo de la plaga</h3>  
+                <p>Se recomienda el manejo de la maleza, monitoreos tempranos, trampas de luz, enemigos naturales y control de estadios larvales tempranos (Químico)</p>
+                <button class="cerrar">Cerrar</button>
+                <button onclick="imprimirDiv()">Imprimir</button>
+                <button id='gpdf' onclick="guardarComoPDF()">Guardar</button>
+
+            </div>
+        </div>
+        
+        <div id="gusE" class="resultado">
+            <div class="gusanoE">
+                <h2>Gusano Elotero</h2>
+                <h3><em>(Helicoverpa zea)</em></h3>
+                    <div class="contenedor">
+                        <div class="imagen-texto">
+                            <img src="static/gusanoE1.png" alt="Imagen 1">
+                            <p>3 días</p>
+                            <h5>Adulto →</h5>
+                            <ul>
+                                <li>Varian colores marrón grisáceo</li>
+                                <li>Lineas de color negro o verde</li>
+                                <li>Mancha oscura casi circular</li>
+                            </ul>
+                        </div>
+                        <div class="imagen-texto">
+                            <img src="static/gusanoE2.png" alt="Imagen 2">
+                            <p>4 días</p>
+                            <h5>Huevo →</h5>
+                            <ul>
+                                <li>Color blanco posteriomente amarillo y finalmente negro</li>
+                                <li>semiesfericos acanalados</li>
+                                <li>Estrías desde borde hacia ápice</li>
+                            </ul>
+                        </div>
+                        <div class="imagen-texto">
+                            <img src="static/gusanoE3.png" alt="Imagen 3">
+                            <p>10-20 días</p>
+                            <h5>Larva →</h5>
+                            <ul>
+                                <li>Color blanco y cabeza negra</li>
+                                <li>Posteriormente color marrón con cabeza color ámbar</li>
+                                <li>Banda logitudinal lateral</li>
+                            </ul>
+                        </div>
+                        <div class="imagen-texto">
+                            <img src="static/gusanoE4.png" alt="Imagen 4">
+                            <p>20-40 días</p>
+                            <h5>Pupa</h5>
+                            <ul>
+                                <li>Color marrón claro a oscuro</li>
+                                <li>se encuentra de 5-15 com del suelo</li>
+                            </ul>
+                        </div>
+                        <div class="imagen-texto">
+                            <ul>
+                                <li><h5>Sintomas:</h5></li>
+                                <li>se presenta el R1-R4</li>
+                                <li>Consume estigmas</li>
+                                <li>Consume granos</li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                <h3>Manejo de la plaga</h3>  
+                <p>Monitoreo continuo y minucioso a partir de R1, fechas de siembra y selección de materiales, liberación de depredadores o productos selectivos( Químicos)</p>
+                <button class="cerrar">Cerrar</button>
+                <button onclick="imprimirDiv()">Imprimir</button>
+                <button id='gpdf' onclick="guardarComoPDF()">Guardar</button>
+
+            </div>
+        </div>
+    <div id="gusS" class="resultado">
+        <div class="gusanoS">
+            <h2>Gusano Soldado</h2>
+            <h3><em>(Spodoptera exigua)</em></h3>
+                <div class="contenedor">
+                    <div class="imagen-texto">
+                        <img src="static/gusanoS4.png" alt="Imagen 1">
+                        <p>6-8 días</p>
+                        <h5>Adulto →</h5>
+                        <ul>
+                            <li>Alas color café grisáceo en zigzag</li>
+                            <li>Mancha semicircular</li>
+                            <li>Alas posteriores color gris o blanco</li>
+                        </ul>
+                    </div>
+                    <div class="imagen-texto">
+                        <img src="static/gusanoS1.png" alt="Imagen 2">
+                        <p>3-4 días</p>
+                        <h5>Huevo →</h5>
+                        <ul>
+                            <li>Color blanco cremoso a verde olivo</li>
+                            <li>Escamas algodonosas</li>
+                            
+                        </ul>
+                    </div>
+                    <div class="imagen-texto">
+                        <img src="static/gusanoS2.png" alt="Imagen 3">
+                        <p>10-32 días</p>
+                        <h5>Larva →</h5>
+                        <ul>
+                            <li>Mancha lateral en mesotórax</li>
+                            <li>Cabeza verde o negro con guiones o manchas</li>
+                            <li>Puntos blancos y líneas</li>
+                        </ul>
+                    </div>
+                    <div class="imagen-texto">
+                        <img src="static/gusanoS3.png" alt="Imagen 4">
+                        <p>9-16 días</p>
+                        <h5>Pupa</h5>
+                        <ul>
+                            <li>Color marrón</li>
+                            <li>Cremaster con dos espinas</li>
+                        </ul>
+                    </div>
+                    <div class="imagen-texto">
+                        <ul>
+                            <li><h5>Sintomas:</h5></li>
+                            <li>Se presenta el V3-V10</li>
+                            <li>Se alimenta de follaje</li>
+                            <li>Deja nervaduras</li>
+                            <li>Hace perforaciones irregulares</li>
+                            <li>Deja hilos de seda</li>
+                        </ul>
+
+                    </div>
+                </div>
+
+            <h3>Manejo de la plaga</h3>  
+            <p> Manejo de la maleza, monitoreos tempranos, trampas de luz, enemigos naturales, control de estadios larvales tempranos( Químicos)</p>
+            <button class="cerrar">Cerrar</button>
+            <button onclick="imprimirDiv()">Imprimir</button>
+            <button id='gpdf' onclick="guardarComoPDF()">Guardar</button>
+
+        </div>
+    </div>
+    <div id="gallC" class="resultado">
+        <div class="gallinaC">
+            <h2>Gallina Ciega</h2>
+            <h3><em>(Phyllophaga sp. y Cyclocephala spp)</em></h3>
+                <div class="contenedor">
+                    <div class="imagen-texto">
+                        
+                        <img src="static/gallinaC4.png" alt="Imagen 1">
+                        <p>6-8 días</p>
+                        <h5>Adulto →</h5>
+                        <ul>
+                            <li>Son escarabajos ovalados y alargados</li>
+                            <li>Color café rojizo a oscuro</li>
+                            <li>Antenas de tipo lamelado</li>
+                        </ul>
+                    </div>
+                    <div class="imagen-texto">
+                        <img src="static/gallinaC1.png" alt="Imagen 2">
+                        <p>3-4 días</p>
+                        <h5>Huevo →</h5>
+                        <ul>
+                            <li>Los huevecillos son ovoides opacos y color blanco</li>                            
+                        </ul>
+                    </div>
+                    <div class="imagen-texto">
+                        <img src="static/gallinaC2.png" alt="Imagen 3">
+                        <p>10-32 días</p>
+                        <h5>Larva →</h5>
+                        <ul>
+                            <li>Son escarabaeiformes tipo C</li>
+                            <li>Cuerpo robusto y 3 pares de patas</li>
+                            <li>Antenas de cuatro artejos</li>
+                        </ul>
+                    </div>
+                    <div class="imagen-texto">
+                        <img src="static/gallinaC3.png" alt="Imagen 4">
+                        <p>9-16 días</p>
+                        <h5>Pupa</h5>
+                        <ul>
+                            <li>Color café pálido</li>
+                            <li>Pupas exaratas</li>
+                        </ul>
+                    </div>
+                    <div class="imagen-texto">
+                        <ul>
+                            <li><h5>Sintomas:</h5></li>
+                            <li>Se presenta el V3-V10</li>
+                            <li>Se alimenta de follaje</li>
+                            <li>Se alimenta de raíces</li>
+                            <li>Provoca marchitez</li>
+                            <li>Hacen agujeros circulares</li>
+                        </ul>
+
+                    </div>
+                </div>
+
+            <h3>Manejo de la plaga</h3>  
+            <p> Manejo de la maleza, monitoreos tempranos, trampas de luz, enemigos naturales, control de estadios larvales tempranos( Químicos)</p>
+            <button class="cerrar">Cerrar</button>
+            <button onclick="imprimirDiv()">Imprimir</button>
+            <button id='gpdf' onclick="guardarComoPDF()">Guardar</button>
+
+        </div>
+    </div>
+    <div id="araR" class="resultado">
+        <div class="arañaR">
+            <h2>Araña Roja</h2>
+            <h3><em>(Tetranychus urticae)</em></h3>
+                <div class="contenedor">
+                    <div class="imagen-texto">
+                        <img src="static/arañaR4.png" alt="Imagen 1">
+                        <p>6-8 días</p>
+                        <h5>Adulto →</h5>
+                        <ul>
+                            <li>La hembras presentan porciones negras</li>
+                            <li>Son mas grandes que los machos</li>
+                            <li>El cuerpo de machos es triangular</li>
+                        </ul>
+                    </div>
+                    <div class="imagen-texto">
+                        <img src="static/arañaR1.png" alt="Imagen 2">
+                        <p>3-4 días</p>
+                        <h5>Huevo →</h5>
+                        <ul>
+                            <li>Los huevecillos pequeños rojizos</li>
+                            <li>Depositados en el enves de las hojas</li>                            
+                        </ul>
+                    </div>
+                    <div class="imagen-texto">
+                        <img src="static/arañaR2.png" alt="Imagen 3">
+                        <p>10-32 días</p>
+                        <h5>Larva →</h5>
+                        <ul>
+                            <li>Coloración rojiza</li>
+                            <li>Son lentas para desplazarse</li>
+                            <li>Poseen solo tres pares de patas</li>
+                        </ul>
+                    </div>
+                    <div class="imagen-texto">
+                        <img src="static/arañaR3.png" alt="Imagen 4">
+                        <p>9-16 días</p>
+                        <h5>Ninfa</h5>
+                        <ul>
+                            <li>Poseen 4 pares de patas</li>
+                            <li>Ligeramente mas pequeñas de los adultos</li>
+                        </ul>
+                    </div>
+                    <div class="imagen-texto">
+                        <ul>
+                            <li><h5>Sintomas:</h5></li>
+                            <li>Se presenta el V3-V10</li>
+                            <li>Se alimenta de follaje</li>
+                            <li>Se alimenta de raíces</li>
+                            <li>Provoca marchitez</li>
+                            <li>Hacen agujeros circulares</li>
+                        </ul>
+
+                    </div>
+                </div>
+
+            <h3>Manejo de la plaga</h3>  
+            <p> Manejo de la maleza, monitoreos tempranos, trampas de luz, enemigos naturales, control de estadios larvales tempranos( Químicos)</p>
+            <button class="cerrar">Cerrar</button>
+            <button onclick="imprimirDiv()">Imprimir</button>
+            <button id='gpdf' onclick="guardarComoPDF()">Guardar</button>
+
+        </div>
+    </div>
+    <div id="gusAl" class="resultado">
+        <div class="gusanoAl">
+            <h2>Gusano de AlFilerillo</h2>
+            <h3><em>(Diabrotica virgifera virgifera)</em></h3>
+                <div class="contenedor">
+                    <div class="imagen-texto">
+                        <img src="static/gusanoAl4.png" alt="Imagen 1">
+                        <p>6-8 días</p>
+                        <h5>Adulto →</h5>
+                        <ul>
+                            <li>Son OVAL</li>
+                            <li>Cuerpo alargado y aerodinámico</li>
+                            <li>Organos luminosos en tórax</li>
+                        </ul>
+                    </div>
+                    <div class="imagen-texto">
+                        <img src="static/gusanoAl1.png" alt="Imagen 2">
+                        <p>3-4 días</p>
+                        <h5>Huevo →</h5>
+                        <ul>
+                            <li>Son blancos redondeado de forma irregular</li>                         
+                        </ul>
+                    </div>
+                    <div class="imagen-texto">
+                        <img src="static/gusanoAl2.png" alt="Imagen 3">
+                        <p>10-32 días</p>
+                        <h5>Larva →</h5>
+                        <ul>
+                            <li>Son delgadas, cílindricas y segmentadas</li>
+                            <li>Son blanco a amarillo o café</li>
+                            <li>cabeza flexible aplanada</li>
+                        </ul>
+                    </div>
+                    <div class="imagen-texto">
+                        <img src="static/gusanoAl3.png" alt="Imagen 4">
+                        <p>9-16 días</p>
+                        <h5>Pupa</h5>
+                        <ul>
+                            <li>Son blanco lechoso</li>
+                            <li>Adquiere amarillo claro</li>
+                            <li>Ojos oscurecidos</li>
+                        </ul>
+                    </div>
+                    <div class="imagen-texto">
+                        <ul>
+                            <li><h5>Sintomas:</h5></li>
+                            <li>Se alimenta de semillas germinadas y raíces</li>
+                            <li>Debilitan plantúla</li>
+                            <li>Hojas amarillas y desgarradas</li>
+                            <li>Provoca marchitez</li>
+                        </ul>
+
+                    </div>
+                </div>
+
+            <h3>Manejo de la plaga</h3>  
+            <p> Manejo de la maleza, monitoreos tempranos, trampas de luz, enemigos naturales, control de estadios larvales tempranos( Químicos)</p>
+            <button class="cerrar">Cerrar</button>
+            <button onclick="imprimirDiv()">Imprimir</button>
+            <button id='gpdf' onclick="guardarComoPDF()">Guardar</button>
+
+        </div>
+    </div>
+    <div id="gusA" class="resultado">
+        <div class="gusanoA">
+            <h2>Gusano de Alambre</h2>
+            <h3><em>(Agriotes spp.)</em></h3>
+                <div class="contenedor">
+                    <div class="imagen-texto">
+                        <img src="static/gusanoA4.png" alt="Imagen 1">
+                        <p>6-8 días</p>
+                        <h5>Adulto →</h5>
+                        <ul>
+                            <li>Coloración distinta</li>
+                            <li>Cabeza amarilla a marrón</li>
+                            <li>Absomen verde opaco con marillo</li>
+                        </ul>
+                    </div>
+                    <div class="imagen-texto">
+                        <img src="static/gusanoA1.png" alt="Imagen 2">
+                        <p>3-4 días</p>
+                        <h5>Huevo →</h5>
+                        <ul>
+                            <li>Son ovalados color amarillos</li>   
+                            <li>Se tornan café antes de eclosipon</li>                         
+                        </ul>
+                    </div>
+                    <div class="imagen-texto">
+                        <img src="static/gusanoA2.png" alt="Imagen 3">
+                        <p>10-32 días</p>
+                        <h5>Larva →</h5>
+                        <ul>
+                            <li>Son caso incoloras</li>
+                            <li>Las larvas maduras son color blanco cremoso</li>
+                            <li>cabeza y abdomen café</li>
+                        </ul>
+                    </div>
+                    <div class="imagen-texto">
+                        <img src="static/gusanoA3.png" alt="Imagen 4">
+                        <p>9-16 días</p>
+                        <h5>Pupa</h5>
+                        <ul>
+                            <li>Son de color blanco amarillento</li>
+                            <li>Tiene antenas y patas rudimentarias</li>
+                        </ul>
+                    </div>
+                    <div class="imagen-texto">
+                        <ul>
+                            <li><h5>Sintomas:</h5></li>
+                            <li>Se alimenta de raíces</li>
+                            <li>Perdida del anclaje</li>
+                            <li>Formación de cuello de ganso</li>
+                            <li>Sintomas de marchitez</li>
+                        </ul>
+
+                    </div>
+                </div>
+
+            <h3>Manejo de la plaga</h3>  
+            <p> Manejo de la maleza, monitoreos tempranos, trampas de luz, enemigos naturales, control de estadios larvales tempranos( Químicos)</p>
+            <button class="cerrar">Cerrar</button>
+            <button onclick="imprimirDiv()">Imprimir</button>
+            <button id='gpdf' onclick="guardarComoPDF()">Guardar</button>
+
+        </div>
+    </div>
+    <script>
+            // Obtener todos los botones y modales
+        const openModalButtons = document.querySelectorAll('.boton');
+        const closeModalButtons = document.querySelectorAll('.close');
+        const modals = document.querySelectorAll('.ventanilla');
+
+        // Abrir el modal correspondiente
+        openModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modalId = button.getAttribute('data-click');
+                const modal = document.getElementById(modalId);
+                modal.style.display = 'flex';
+            });
+        });
+
+        // Cerrar el modal cuando se hace clic en el botón de cierre
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = button.closest('.ventanilla');
+                modal.style.display = 'none';
+            });
+        });
+
+        // Cerrar el modal cuando se hace clic fuera del contenido
+        window.addEventListener('click', (e) => {
+            modals.forEach(modal => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+    <script>
+
+        // Obtenemos el formulario y el div donde mostraremos el resultado
+        const formulario = document.getElementById('formularioDiagnostico');
+        const resultadoGE = document.getElementById('gusE');
+        const resultadoGC = document.getElementById('gusC');
+        const resultadoGS = document.getElementById('gusS');
+        const resultadoGAC = document.getElementById('gallC');
+        const resultadoGA = document.getElementById('gusA');
+        const resultadoAR = document.getElementById('araR');
+        const resultadoGAL = document.getElementById('gusAl');
+        const resultados = document.querySelectorAll('.resultado');
+        
+        const botonCerrar = document.querySelectorAll('.cerrar');
+        formulario.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+            // 1️⃣ Definir todas las reglas
+            const tratamientos = {
+                'gusC': ['Alta', 'Vegetativa', 'Tallo', 'Media', 'No', 'No', 'BarrenaSinCaer', 'No', 'No', 'HojasPerforadas', 'No', 'No', 'No', 'No', 'No', 'Si', 'No', 'No', 'Blanco', 'Esferica', 'ParteInferiorHojas', 'NoCaracteristica', 'BlancoAmarilloPuntosNegros', 'VerdeaNegroManchasRectangulares', 'YInvertida', 'Caoba', 'DosEspinasFormaUinvertida', 'SeEntierraSuelo', 'BlancoAmarilloOjosOscuros', 'Palomilla', 'ColorGrisManchasmarrones', 'AnterioresBlancas', 'NoCaracteristica', 'No', 'No'], 
+                'gusC': ['Alta', 'Reproductiva', 'Tallo', 'Media', 'No', 'No', 'BarrenaSinCaer', 'No', 'No', 'HojasPerforadas', 'No', 'No', 'No', 'No', 'No', 'Si', 'No', 'No', 'Blanco', 'Esferica', 'ParteInferiorHojas', 'NoCaracteristica', 'BlancoAmarilloPuntosNegros', 'VerdeaNegroManchasRectangulares', 'YInvertida', 'Caoba', 'DosEspinasFormaUinvertida', 'SeEntierraSuelo', 'BlancoAmarilloOjosOscuros', 'Palomilla', 'ColorGrisManchasmarrones', 'AnterioresBlancas', 'NoCaracteristica', 'No', 'No'], 
+                'gusC': ['Alta', 'Vegetativa', 'Hoja', 'Media', 'No', 'No', 'BarrenaSinCaer', 'No', 'No', 'HojasPerforadas', 'No', 'No', 'No', 'No', 'No', 'Si', 'No', 'No', 'Blanco', 'Esferica', 'ParteInferiorHojas', 'NoCaracteristica', 'BlancoAmarilloPuntosNegros', 'VerdeaNegroManchasRectangulares', 'YInvertida', 'Caoba', 'DosEspinasFormaUinvertida', 'SeEntierraSuelo', 'BlancoAmarilloOjosOscuros', 'Palomilla', 'ColorGrisManchasmarrones', 'AnterioresBlancas', 'NoCaracteristica', 'No', 'No'],
+                'gusC': ['Alta', 'Reproductiva', 'Hoja', 'Media', 'No', 'No', 'BarrenaSinCaer', 'No', 'No', 'HojasPerforadas', 'No', 'No', 'No', 'No', 'No', 'Si', 'No', 'No', 'Blanco', 'Esferica', 'ParteInferiorHojas', 'NoCaracteristica', 'BlancoAmarilloPuntosNegros', 'VerdeaNegroManchasRectangulares', 'YInvertida', 'Caoba', 'DosEspinasFormaUinvertida', 'SeEntierraSuelo', 'BlancoAmarilloOjosOscuros', 'Palomilla', 'ColorGrisManchasmarrones', 'AnterioresBlancas', 'NoCaracteristica', 'No', 'No'], 
+                'gusE': ['Alta', 'Reproductiva', 'Hoja', 'Media', 'No', 'No', 'NingunaObservacion', 'No', 'Si', 'HojasAgulerosSeriados', 'Si', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'BlancoAmarilloNegro', 'Semiesferica', 'Suelo', 'EstriasBordeAapice', 'BlancoaMarron', 'NegroAmbar', 'CuerpoAlargadoCilindrico', 'MarronClaroOscuro', 'DosEspinasDistintas', '5O15cmSuelo', 'Ninguno', 'ColorMarronGrisaceoLineasnegroaverdeolivo', 'Palomilla', 'ManchasOscuraCircularEntreCentroyPunta', 'NoCaracteristica', 'No', 'No'],
+                'gusE': ['DemasiadoAlta', 'Reproductiva', 'Hoja', 'Media', 'No', 'No', 'NingunaObservacion', 'No', 'Si', 'HojasAgulerosSeriados', 'Si', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'BlancoAmarilloNegro', 'Semiesferica', 'Suelo', 'EstriasBordeAapice', 'BlancoaMarron', 'NegroAmbar', 'CuerpoAlargadoCilindrico', 'MarronClaroOscuro', 'DosEspinasDistintas', '5O15cmSuelo', 'Ninguno', 'ColorMarronGrisaceoLineasnegroaverdeolivo', 'Palomilla', 'ManchasOscuraCircularEntreCentroyPunta', 'NoCaracteristica', 'No', 'No'],
+                'gusE': ['Alta', 'Maduracion', 'Hoja', 'Media', 'No', 'No', 'NingunaObservacion', 'No', 'Si', 'HojasAgulerosSeriados', 'Si', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'BlancoAmarilloNegro', 'Semiesferica', 'Suelo', 'EstriasBordeAapice', 'BlancoaMarron', 'NegroAmbar', 'CuerpoAlargadoCilindrico', 'MarronClaroOscuro', 'DosEspinasDistintas', '5O15cmSuelo', 'Ninguno', 'ColorMarronGrisaceoLineasnegroaverdeolivo', 'Palomilla', 'ManchasOscuraCircularEntreCentroyPunta', 'NoCaracteristica', 'No', 'No'],
+                'gusE': ['DemasiadoAlta', 'Maduracion', 'Hoja', 'Media', 'No', 'No', 'NingunaObservacion', 'No', 'Si', 'HojasAgulerosSeriados', 'Si', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'BlancoAmarilloNegro', 'Semiesferica', 'Suelo', 'EstriasBordeAapice', 'BlancoaMarron', 'NegroAmbar', 'CuerpoAlargadoCilindrico', 'MarronClaroOscuro', 'DosEspinasDistintas', '5O15cmSuelo', 'Ninguno', 'ColorMarronGrisaceoLineasnegroaverdeolivo', 'PalomillaManchasOscuraCircularEntreCentroyPunta', 'NoCaracteristica', 'No', 'No'],
+                'gusE': ['Alta', 'Reproductiva', 'Grano', 'Media', 'No', 'No', 'NingunaObservacion', 'No', 'Si', 'HojasAgulerosSeriados', 'Si', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'BlancoAmarilloNegro', 'Semiesferica', 'Suelo', 'EstriasBordeAapice', 'BlancoaMarron', 'NegroAmbar', 'CuerpoAlargadoCilindrico', 'MarronClaroOscuro', 'DosEspinasDistintas', '5O15cmSuelo', 'Ninguno', 'ColorMarronGrisaceoLineasnegroaverdeolivo', 'Palomilla', 'ManchasOscuraCircularEntreCentroyPunta', 'NoCaracteristica', 'No', 'No'],
+                'gusE': ['DemasiadoAlta', 'Reproductiva', 'Grano', 'Media', 'No', 'No', 'NingunaObservacion', 'No', 'Si', 'HojasAgulerosSeriados', 'Si', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'BlancoAmarilloNegro', 'Semiesferica', 'Suelo', 'EstriasBordeAapice', 'BlancoaMarron', 'NegroAmbar', 'CuerpoAlargadoCilindrico', 'MarronClaroOscuro', 'DosEspinasDistintas', '5O15cmSuelo', 'Ninguno', 'ColorMarronGrisaceoLineasnegroaverdeolivo', 'Palomilla', 'ManchasOscuraCircularEntreCentroyPunta', 'NoCaracteristica', 'No', 'No'],
+                'gusE': ['Alta', 'Maduracion', 'Grano', 'Media', 'No', 'No', 'NingunaObservacion', 'No', 'Si', 'HojasAgulerosSeriados', 'Si', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'BlancoAmarilloNegro', 'Semiesferica', 'Suelo', 'EstriasBordeAapice', 'BlancoaMarron', 'NegroAmbar', 'CuerpoAlargadoCilindrico', 'MarronClaroOscuro', 'DosEspinasDistintas', '5O15cmSuelo', 'Ninguno', 'ColorMarronGrisaceoLineasnegroaverdeolivo', 'Palomilla', 'ManchasOscuraCircularEntreCentroyPunta', 'NoCaracteristica', 'No', 'No'],            
+                'gusE': ['DemasiadoAlta', 'Maduracion', 'Grano', 'Media', 'No', 'No', 'NingunaObservacion', 'No', 'Si', 'HojasAgulerosSeriados', 'Si', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'BlancoAmarilloNegro', 'Semiesferica', 'Suelo', 'EstriasBordeAapice', 'BlancoaMarron', 'NegroAmbar', 'CuerpoAlargadoCilindrico', 'MarronClaroOscuro', 'DosEspinasDistintas', '5O15cmSuelo', 'Ninguno', 'ColorMarronGrisaceoLineasnegroaverdeolivo', 'Palomilla', 'ManchasOscuraCircularEntreCentroyPunta', 'NoCaracteristica', 'No', 'No'], 
+                'gusS': ['Alta', 'Vegetativa', 'Hojas', 'Moderada', 'No', 'No', 'NingunaObservacion', 'No', 'Si', 'HojasPerforadas', 'No', 'No', 'No', 'No', 'No', 'No', 'Si', 'No', 'BlancoCremosoAVerdeOlivo', 'Esferica', 'ParteSuperiorHojas', 'EscamasAlgodonosas', 'BlancoaMarron', 'VerdeNegroManchasRectangulares', 'ManchaLateralMesotorax', 'MarronClaroOscuro', 'DosEspinasRectas', 'Suelo', 'Ninguno', 'Palomilla', 'ColorGris', 'AnterioresGrisaceoZigzagyPosterioresBlancas', 'NoCaracteristica', 'No', 'No'],
+                'gusS': ['Alta', 'Maduracion', 'Hojas', 'Moderada', 'No', 'No', 'NingunaObservacion', 'No', 'Si', 'HojasPerforadas', 'No', 'No', 'No', 'No', 'No', 'No', 'Si', 'No', 'BlancoCremosoAVerdeOlivo', 'Esferica', 'ParteSuperiorHojas', 'EscamasAlgodonosas', 'BlancoaMarron', 'VerdeNegroManchasRectangulares', 'ManchaLateralMesotorax', 'MarronClaroOscuro', 'DosEspinasRectas', 'Suelo', 'Ninguno', 'Palomilla', 'ColorGris', 'AnterioresGrisaceoZigzagyPosterioresBlancas', 'NoCaracteristica', 'No', 'No'], 
+                'gallC': ['Alta', 'Vegetativa', 'Tallo', 'Moderada', 'Si', 'No', 'NingunaObservacion', 'No', 'No', 'HojasAmarillas', 'No', 'No', 'No', 'Si', 'No', 'No', 'No', 'No', 'Blanco', 'Esferica', 'Suelo', 'NoCaracteristica', 'BlancoaMarron', 'NoCaracteristica', 'GaleaMaxilar', 'CafePalido', 'NoCaracteristica', 'SeEntierraSuelo', 'CafeNegroBrillante', 'Escarabajo', 'ColorCaferojizoaoscuroOvaladoyAlargado', 'NoCaracteristica', 'ModeradamenteAlargadasyPocasEspinas', 'No', 'No'],
+                'gallC': ['Alta', 'Vegetativa', 'Hoja', 'Moderada', 'Si', 'No', 'NingunaObservacion', 'No', 'No', 'HojasAmarillas', 'No', 'No', 'No', 'Si', 'No', 'No', 'No', 'No', 'Blanco', 'Esferica', 'Suelo', 'NoCaracteristica', 'BlancoaMarron', 'NoCaracteristica', 'GaleaMaxilar', 'CafePalido', 'NoCaracteristica', 'SeEntierraSuelo', 'CafeNegroBrillante', 'Escarabajo', 'ColorCaferojizoaoscuroOvaladoyAlargado', 'NoCaracteristica', 'ModeradamenteAlargadasyPocasEspinas', 'No', 'No'], 
+                'gusA': ['Media', 'Vegetativa', 'Tallo', 'Moderada', 'Si', 'No', 'NingunaObservacion', 'Si', 'No', 'HojasPerforadas', 'No', 'No', 'No', 'Si', 'No', 'No', 'No', 'No', 'AmarilloPalido', 'Esferica', 'SeEncuentranAgrupados', 'NoCaracteristica', 'AmarilloMarronNaranaja', 'EsclerotizadoColorOscuro', 'CuerpoAlargadoCilindrico', 'MarronClaroOscuro', 'NoCaracteristicas', 'SeEntierraSuelo', 'Ninguno', 'Palomilla', 'ColormarronAnegrometalicoAlargadoyAplanado', 'NoCaracteristica', 'NoCaracteristica', 'No', 'No'],
+                'gusA': ['Media', 'Vegetativa', 'Hoja', 'Moderada', 'Si', 'No', 'NingunaObservacion', 'Si', 'No', 'HojasPerforadas', 'No', 'No', 'No', 'Si', 'No', 'No', 'No', 'No', 'AmarilloPalido', 'Esferica', 'SeEncuentranAgrupados', 'NoCaracteristica', 'AmarilloMarronNaranaja', 'EsclerotizadoColorOscuro', 'CuerpoAlargadoCilindrico', 'MarronClaroOscuro', 'NoCaracteristicas', 'SeEntierraSuelo', 'Ninguno', 'Palomilla', 'ColormarronAnegrometalicoAlargadoyAplanado', 'NoCaracteristica', 'NoCaracteristica', 'No', 'No'], 
+                'araR': ['Alta', 'Vegetativa', 'Hojas', 'Poca', 'No', 'No', 'NingunaObservacion', 'No', 'No', 'HojasAmarillas', 'No', 'Si', 'No', 'Si', 'Si', 'No', 'Si', 'No', 'TraslucidoAmarilloNaranja', 'Ovalada', 'SeEncuentranAgrupados', 'HilosSeda', 'BlancoaMarron', 'NegroAmbar', 'NoCaracteristica', 'Caoba', 'NoCaracteristica', 'ParteSuperiorTallo', 'Ninguno', 'Acaro', 'Color', 'Rojizo', 'NoCaracteristica', 'Tiene8patasconManchasenDorso', 'No', 'No'], 
+                'gusAl': ['Alta', 'Vegetativa', 'Tallo', 'Poca', 'Si', 'Si', 'MordedurasBase', 'Si', 'Si', 'HojasAmarillas', 'Si', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'Blanco', 'Ovalada', 'ParteInferiorHojas', 'NoCaracteristica', 'ColorVariable', 'NegroAmbar', 'CuerpoAlargadoCilindro', 'BlancoCremosoAmarilloClaro', 'Liso', 'SeEntierraSuelo', 'Ninguno', 'Escarabajo', 'ColorMarronGrisaceoCuerpoRobusto', 'NoCaracteristica', 'NoCaracteristica', 'Si', 'Si'],
+                'gusAl': ['Alta', 'Vegetativa', 'Hoja', 'Poca', 'Si', 'Si', 'MordedurasBase', 'Si', 'Si', 'HojasAmarillas', 'Si', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'Blanco', 'Ovalada', 'ParteInferiorHojas', 'NoCaracteristica', 'ColorVariable', 'NegroAmbar', 'CuerpoAlargadoCilindro', 'BlancoCremosoAmarilloClaro', 'Liso', 'SeEntierraSuelo', 'Ninguno', 'Escarabajo', 'ColorMarronGrisaceoCuerpoRobusto', 'NoCaracteristica', 'NoCaracteristica', 'Si', 'Si'],
+                'gusAl': ['Alta', 'Vegetativa', 'Grano', 'Poca', 'Si', 'Si', 'MordedurasBase', 'Si', 'Si', 'HojasAmarillas', 'Si', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'Blanco', 'Ovalada', 'ParteInferiorHojas', 'NoCaracteristica', 'ColorVariable', 'NegroAmbar', 'CuerpoAlargadoCilindro', 'BlancoCremosoAmarilloClaro', 'Liso', 'SeEntierraSuelo', 'Ninguno', 'Escarabajo', 'ColorMarronGrisaceoCuerpoRobusto', 'NoCaracteristica', 'NoCaracteristica', 'Si', 'Si'],
+                'gusAl': ['Alta', 'Reproductiva', 'Tallo', 'Poca', 'Si', 'Si', 'MordedurasBase', 'Si', 'Si', 'HojasAmarillas', 'Si', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'Blanco', 'Ovalada', 'ParteInferiorHojas', 'NoCaracteristica', 'ColorVariable', 'NegroAmbar', 'CuerpoAlargadoCilindro', 'BlancoCremosoAmarilloClaro', 'Liso', 'SeEntierraSuelo', 'Ninguno', 'Escarabajo', 'ColorMarronGrisaceoCuerpoRobusto', 'NoCaracteristica', 'NoCaracteristica', 'Si', 'Si'],
+                'gusAl': ['Alta', 'Reproductiva', 'Hoja', 'Poca', 'Si', 'Si', 'MordedurasBase', 'Si', 'Si', 'HojasAmarillas', 'Si', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'Blanco', 'Ovalada', 'ParteInferiorHojas', 'NoCaracteristica', 'ColorVariable', 'NegroAmbar', 'CuerpoAlargadoCilindro', 'BlancoCremosoAmarilloClaro', 'Liso', 'SeEntierraSuelo', 'Ninguno', 'Escarabajo', 'ColorMarronGrisaceoCuerpoRobusto', 'NoCaracteristica', 'NoCaracteristica', 'Si', 'Si'],
+                'gusAl': ['Alta', 'Reproductiva', 'Grano', 'Poca', 'Si', 'Si', 'MordedurasBase', 'Si', 'Si', 'HojasAmarillas', 'Si', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'Blanco', 'Ovalada', 'ParteInferiorHojas', 'NoCaracteristica', 'ColorVariable', 'NegroAmbar', 'CuerpoAlargadoCilindro', 'BlancoCremosoAmarilloClaro', 'Liso', 'SeEntierraSuelo', 'Ninguno', 'Escarabajo', 'ColorMarronGrisaceoCuerpoRobusto', 'NoCaracteristica', 'NoCaracteristica', 'Si', 'Si'],
+                'gusAl': ['Alta', 'Maduracion', 'Tallo', 'Poca', 'Si', 'Si', 'MordedurasBase', 'Si', 'Si', 'HojasAmarillas', 'Si', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'Blanco', 'Ovalada', 'ParteInferiorHojas', 'NoCaracteristica', 'ColorVariable', 'NegroAmbar', 'CuerpoAlargadoCilindro', 'BlancoCremosoAmarilloClaro', 'Liso', 'SeEntierraSuelo', 'Ninguno', 'Escarabajo', 'ColorMarronGrisaceoCuerpoRobusto', 'NoCaracteristica', 'NoCaracteristica', 'Si', 'Si'],
+                'gusAl': ['Alta', 'Maduracion', 'Hoja', 'Poca', 'Si', 'Si', 'MordedurasBase', 'Si', 'Si', 'HojasAmarillas', 'Si', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'Blanco', 'Ovalada', 'ParteInferiorHojas', 'NoCaracteristica', 'ColorVariable', 'NegroAmbar', 'CuerpoAlargadoCilindro', 'BlancoCremosoAmarilloClaro', 'Liso', 'SeEntierraSuelo', 'Ninguno', 'Escarabajo', 'ColorMarronGrisaceoCuerpoRobusto', 'NoCaracteristica', 'NoCaracteristica', 'Si', 'Si'],
+                'gusAl': ['Alta', 'Maduracion', 'Grano', 'Poca', 'Si', 'Si', 'MordedurasBase', 'Si', 'Si', 'HojasAmarillas', 'Si', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'Blanco', 'Ovalada', 'ParteInferiorHojas', 'NoCaracteristica', 'ColorVariable', 'NegroAmbar', 'CuerpoAlargadoCilindro', 'BlancoCremosoAmarilloClaro', 'Liso', 'SeEntierraSuelo', 'Ninguno', 'Escarabajo', 'ColorMarronGrisaceoCuerpoRobusto', 'NoCaracteristica', 'NoCaracteristica', 'Si', 'Si']
+            };
+            
+
+            // 2️⃣ Obtener respuestas del usuario
+            const form = e.target;
+            const respuestasUsuario = [
+                form.temp.value,
+                form.fase.value,
+                form.orgafe.value,
+                form.hume.value,
+                form.sintomas1.value,
+                form.sintomas2.value,
+                form.sintomas3.value,
+                form.sintomas4.value,
+                form.sintomas5.value,
+                form.sintomas6.value,
+                form.sintomas7.value,
+                form.sintomas8.value,
+                form.sintomas9.value,
+                form.sintomas10.value,
+                form.sintomas11.value,
+                form.sintomas12.value,
+                form.sintomas13.value,
+                form.sintomas14.value,
+                form.car1.value,
+                form.car2.value,
+                form.car3.value,
+                form.car4.value,
+                form.car5.value,
+                form.car6.value,
+                form.car7.value,
+                form.car8.value,
+                form.car9.value,
+                form.car10.value,
+                form.car11.value,
+                form.car12.value,
+                form.car13.value,
+                form.car14.value,
+                form.car15.value,
+                form.car16.value,
+                form.car17.value
+                
+            ];
+
+            // 3️⃣ Calcular porcentaje de coincidencia para cada regla
+            let mejorRegla = '';
+            let mejorPorcentaje = -1;
+
+            for (const nombreTratamiento in tratamientos) {
+            const tratamiento = tratamientos[nombreTratamiento];
+            let coincidencias = 0;
+
+            for (let i = 0; i < tratamiento.length; i++) {
+                if (respuestasUsuario[i] === tratamiento[i]) {
+                coincidencias++;
+                }
+            }
+
+            const porcentaje = (coincidencias / tratamiento.length) * 100;
+
+            console.log(`${nombreTratamiento}: ${porcentaje}%`);
+
+            if (porcentaje > mejorPorcentaje) {
+                mejorPorcentaje = porcentaje;
+                mejorRegla = nombreTratamiento;
+            }
+            }
+            let diagnosticoTexto = '';
+
+            // 5️⃣ Mostrar el div de la mejor coincidencia
+            if (mejorRegla) {
+                console.log(`${mejorRegla}`);
+                
+                document.getElementById(mejorRegla).style.display = 'flex';
+
+                const restratamiento = mejorRegla;
+            }
+        
+            if (mejorRegla === 'gusE') {
+            diagnosticoTexto += 'Gusano Cogollero';
+            } else if (mejorRegla === 'gusC') {
+                diagnosticoTexto += 'Gusano Elotero ';
+            } else if (mejorRegla === 'gusS') {
+                diagnosticoTexto += 'Gusano Soldado';
+            } else if (mejorRegla === 'gallC') {
+                diagnosticoTexto += 'Gallina Ciega';
+            } else if (mejorRegla === 'gusA') {
+                diagnosticoTexto += 'Gusano de alambre';
+            } else if (mejorRegla === 'araR') {
+                diagnosticoTexto += 'Araña Roja';
+            } else if (mejorRegla === 'gusAl') {
+                diagnosticoTexto += 'Gusano Alfilerillo';
+            } else{
+                diagnosticoTexto += 'No se guardo';
+
+            }
+
+        // Colocar el texto en el input hidden
+        document.getElementById('diagnostico').value = diagnosticoTexto;
+        const formData = new FormData(formulario);
+          
+        // Envía los datos con fetch
+        fetch('/guardar', {
+        method: 'POST',
+        body: formData
+        })
+        
+    });
+
+        // Cerrar el modal cuando se hace clic en el botón de cierre
+        botonCerrar.forEach(botonc => {
+            botonc.addEventListener('click', () => {
+                const mostrar = botonc.closest('.resultado');
+                mostrar.style.display = 'none';
+            });
+        });
+        
+
+        // Cerrar el modal cuando se hace clic fuera del contenido
+        window.addEventListener('click', (e) => {
+            resultados.forEach(mostrar => {
+                if (e.target === mostrar) {
+                    mostrar.style.display = 'none';
+                }
+            });
+        });
+    
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        function imprimirDiv() {
+            const visibleDiv = Array.from(document.querySelectorAll('.resultado > div'))
+                            .find(div => getComputedStyle(div.parentElement).display !== 'none');
+
+            if (visibleDiv) {
+                const contenido = visibleDiv.innerHTML;
+                const ventana = window.open('', '', 'height=600,width=800');
+                ventana.document.write('<html><head><title>Imprimir</title></head><body>');
+                ventana.document.write(contenido);
+                ventana.document.write('</body></html>');
+                ventana.document.close();
+                ventana.onload = function () {
+                    setTimeout(() => ventana.print(), 500); // Espera medio segundo para asegurar que las imágenes estén listas
+                };
+            } else {
+                alert("No hay contenido visible para imprimir.");
+            }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        function guardarComoPDF() {
+            const visibleDiv = Array.from(document.querySelectorAll('.resultado > div'))
+            .find(div => getComputedStyle(div.parentElement).display !== 'none');
+
+            if (!visibleDiv) {
+                alert("No hay contenido visible para guardar.");
+                return;
+            }
+
+            // Extraemos el contenido HTML del div visible
+            const contenido = visibleDiv.innerHTML;
+
+            // Abrimos una nueva ventana y escribimos el contenido
+            const ventana = window.open('', '', 'height=600,width=800');
+            ventana.document.write(`
+                <html>
+                <head>
+                    <title>Generar PDF</title>
+                </head>
+                <body>
+                    <div id="paraPDF">
+                    ${contenido}
+                    </div>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"><\/script>
+                    <script>
+                    window.onload = function () {
+                        const div = document.getElementById('paraPDF');
+                        const opciones = {
+                        margin: 0.5,
+                        filename: 'resultado.pdf',
+                        image: { type: 'jpeg', quality: 0.98 },
+                        html2canvas: { scale: 2 },
+                        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                        };
+                        html2pdf().set(opciones).from(div).save().then(() => {
+                        window.close(); // Cierra la ventana automáticamente después
+                        });
+                    };
+                    <\/script>
+                </body>
+                </html>
+            `);
+
+            ventana.document.close();
+        }
+
+        
+
+    </script>
+</body>
+
+</html>

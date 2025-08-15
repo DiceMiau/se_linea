@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio Sistema Experto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+            padding: 50px;
+        }
+
+
+        .inicio {
+            width: 520px;
+            height: 400px;
+            text-align: center;
+            background-color: rgb(161, 8, 8);
+            text-align: center;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 20px 110px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .boton {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .boton:hover {
+            background-color: #45a049;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="inicio">
+            <h1>Bienvenido al Sistema de Experto para la identificación de plagas insectiles en el cultivo de maíz del estado de México</h1>
+            <p style="text-align: justify;"> Este cuestionario tiene como objetivo ayudarte a identificar posibles plagas insectiles en tu cultivo de maíz mediante la observcaión de síntomas visibles. Asegúrate de observar cuidadosamente las características del cultivo(color, forma, tamaño, presencia de insectos o daños visibles) y selecciona las opciones que más coincidan con lo que observas.</p>
+            <p>Haz clic en el botón para comenzar el cuestionario.</p>
+            
+                <div style="display: inline-flex; align-items: center; justify-content: center;">
+                    <a href="{{ url_for('SE2') }}">
+                    <button class="boton">Ir al Cuestionario</button>
+                    <img src="static/Plagas.png" alt="Icono" style="width: 40px; height: 40px;">
+                    </a>
+                </div>
+            
+
+        </div>
+    </div>
+</body>
+
+</html>
