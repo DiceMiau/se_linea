@@ -381,3 +381,18 @@
         button:hover {
             background-color: #45a049;
         }
+        @media (max-width: 768px) {
+          form {
+            width: 100%;
+            height: auto;
+          }
+        }
+        @media (max-width: 768px) {
+          form input,
+          form select,
+          form textarea,
+          form button {
+            width: 100%;
+            max-width: 100%;
+          }
+        }       
